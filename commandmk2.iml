@@ -7,5 +7,25 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Desktop/jlayer-1.0.3/src/main/java" />
+          <root url="file://$USER_HOME$/Desktop/jlayer-1.0.3/src/test/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Desktop/jlayer-1.0.3/src/main/resources/javazoom" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Desktop/jlayer-1.0.3/src/main/resources/javazoom" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
