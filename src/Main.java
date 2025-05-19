@@ -4,10 +4,15 @@ import java.util.Scanner;
 //hello
 public class Main {
     public static void main(String[] args) throws InterruptedException {
+        AudioCont introMusic = new AudioCont();
+        introMusic.playSound("107330__chimerical__countdown-news-intro.wav");
+        StoryGUI story = new StoryGUI();
         MenuMk2 intro = new MenuMk2(); // create and start the intro GUI
         while (!intro.isStart()){
             Thread.sleep(0); // ide no like this
         }
+        introMusic.stopSound();
+
         Menu start = new Menu(); // create a menu
         AutoTurn chooser = new AutoTurn(); // create an autoTurn
         start.setName("human"); // used to set player name

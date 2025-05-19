@@ -100,7 +100,7 @@ public class MenuMk2 {
         frame.setVisible(false);
     }
 
-    public boolean isStart() {
+    public boolean isStart() { // get the is start variable
         return start;
     }
 }

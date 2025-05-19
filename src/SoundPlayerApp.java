@@ -23,14 +23,14 @@ public class SoundPlayerApp {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                playSound("C:\\Users\\misss\\Desktop\\Audio\\ex.wav");
+                playSound("107330__chimerical__countdown-news-intro.wav");
             }
         });
 
         button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                playSound("C:\\Users\\misss\\Desktop\\Audio\\80s.mp3");
+                playSound("107330__chimerical__countdown-news-intro.wav");
             }
         });
 
