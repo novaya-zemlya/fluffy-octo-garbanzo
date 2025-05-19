@@ -10,12 +10,12 @@ import java.util.Hashtable;
 
 
 public class StoryGUI {
-    JFrame frame = new JFrame("While Other Nations Think");
-    private boolean done;
-    private String text;
-    private int tVal;
-    Dictionary<Integer,String> d = new Hashtable<>();
-    private JLabel label;
+    JFrame frame = new JFrame("Intro"); // the Jframe
+    private boolean done; // if the story has been finished
+    private String text; // the text that will be displayed on screen
+    private int tVal; // used to know what the current text should be accessed.
+    Dictionary<Integer,String> d = new Hashtable<>(); // dictionary to store the text
+    private JLabel label; // the label used to display the text
 
 
     public StoryGUI() {
@@ -24,7 +24,7 @@ public class StoryGUI {
         tVal = 0;
 
         d.put(0,"You Turn on the news, after all tonight is the big night.");
-        d.put(1,"The televisons slightly blurry picture starts to clear");
+        d.put(1,"The televison's slightly blurry picture starts to clear");
         d.put(2,"The Ads end and the camera cuts to the news reporter.");
         d.put(3,"* and the results are in! We now know with certainty who won the election*");
         d.put(4,"you are shocked to see your party won");
@@ -52,10 +52,13 @@ public class StoryGUI {
         JMenu textMenu = new JMenu("Fwd/Back");
         JMenuItem next = new JMenuItem("Next");
         JMenuItem back = new JMenuItem("Back");
+        JMenuItem skip = new JMenuItem("Skip");
 
         textMenu.add(next);
         textMenu.addSeparator();
         textMenu.add(back);
+        textMenu.addSeparator();
+        textMenu.add(skip);
         menuBar.add(textMenu);
 
 
@@ -92,6 +95,14 @@ public class StoryGUI {
                 }
             }
         });
+
+        skip.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                done = true;
+                frame.setVisible(false);
+            }
+        });
         frame.setJMenuBar(menuBar);
 
 
@@ -103,16 +114,16 @@ public class StoryGUI {
     }
     public void GUIOff(){//make the frame not visible (turn off GUI)
         frame.setVisible(false);
-    }
+    } // turn off the GUI
 
     public boolean isDone() {
         return done;
-    }
+    } // return if the story is finished
 
-    public void setUpFrame(boolean clear){
+    public void setUpFrame(boolean clear){ // set up a new frame.
 
         if (clear){
-            frame.remove(label);
+            frame.remove(label); // if a label with text exists, clear it
         }
 
         text = d.get(tVal);

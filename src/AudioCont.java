@@ -7,12 +7,14 @@ import java.io.IOException;
 
 public class AudioCont {
     private static Clip clip;
+    private static boolean go;
 
     public AudioCont() {
+        go = true;
 
     }
 
-    public static void playSound(String soundFilePath) {
+    public static void playSound(String soundFilePath) { // play a sound
         try {
             File soundFile = new File(soundFilePath);
             if (!soundFile.exists()) {
@@ -36,7 +38,7 @@ public class AudioCont {
         }
     }
 
-    public static void playSoundLoop(String soundFilePath) {
+    public static void playSoundLoop(String soundFilePath) { // play a sound and loop it
         try {
             File soundFile = new File(soundFilePath);
             if (!soundFile.exists()) {
@@ -60,10 +62,67 @@ public class AudioCont {
         }
     }
 
-    public static void stopSound() {
+    public static void stopSound() { // stop the sound
         if (clip != null && clip.isRunning()) {
             clip.stop();
             clip.close();
         }
     }
+
+
+    public static void playMid1(){
+        AudioCont.playSound("172561__djgriffin__video-game-7.wav");
+        clip.addLineListener(event -> {
+            if (event.getType() == LineEvent.Type.STOP) {
+                AudioCont.playMid2();
+            }
+        });
+    }
+
+    public static void playMid2(){
+        AudioCont.playSound("806415__harrisonlace__synth_arp_escape_from_boston_dynamics_fmin_125.wav");
+        clip.addLineListener(event -> {
+            if (event.getType() == LineEvent.Type.STOP) {
+                AudioCont.playMid1();
+            }
+        });
+
+
+    }
+
+    public static void playEnd(){
+        AudioCont.playSound("803432__logicmoon__under-the-sky.wav");
+    }
+
+    public static void playAlarm(){
+        AudioCont.playSound("33732__jobro__1-alarm-short-e.wav");
+    }
+
+    public static void playMidGame() throws InterruptedException {
+        while (go) {
+            playMid1();
+            while (clip.isRunning()) {
+                Thread.sleep(0);
+                if (!go){
+                    break;
+                }
+            }
+            if (!go){
+                break;
+            }
+            AudioCont.stopSound();
+            playMid2();
+            while (clip.isRunning()) {
+                Thread.sleep(0);
+                if (!go){
+                    break;
+                }
+            }
+        }
+    }
+
+    public void stopMid(){
+        go = false;
+    }
 }
+

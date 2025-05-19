@@ -4,8 +4,8 @@ import java.util.Scanner;
 //hello
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        AudioCont introMusic = new AudioCont();
-        introMusic.playSoundLoop("107330__chimerical__countdown-news-intro.wav");
+        //AudioCont introMusic = new AudioCont();
+        AudioCont.playSound("107330__chimerical__countdown-news-intro.wav");
 
 
         StoryGUI story = new StoryGUI();
@@ -18,7 +18,14 @@ public class Main {
         while (!intro.isStart()){
             Thread.sleep(0); // ide no like this
         }
-        introMusic.stopSound();
+        AudioCont.stopSound();
+
+
+        AudioCont.playMid1();
+
+
+
+
 
         Menu start = new Menu(); // create a menu
         AutoTurn chooser = new AutoTurn(); // create an autoTurn
@@ -94,6 +101,7 @@ public class Main {
 
 
         }
+        AudioCont.stopSound();
         start.GUIOff();
 
     }
