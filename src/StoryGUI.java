@@ -8,12 +8,16 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 
+
 public class StoryGUI {
     JFrame frame = new JFrame("While Other Nations Think");
     private boolean done;
     private String text;
     private int tVal;
     Dictionary<Integer,String> d = new Hashtable<>();
+    private JLabel label;
+
+
     public StoryGUI() {
         done = false;
 
@@ -58,7 +62,7 @@ public class StoryGUI {
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (tVal >= 11){
+                if (tVal >= 10){
                     frame.setVisible(false);
                     done = true;
                 }
@@ -66,7 +70,7 @@ public class StoryGUI {
                 else {
                     frame.setVisible(false);
                     tVal += 1;
-                    setUpFrame();
+                    setUpFrame(true);
                     frame.setVisible(true);
                 }
             }
@@ -81,15 +85,17 @@ public class StoryGUI {
                 }
 
                 else {
+                    frame.setVisible(false);
                     tVal -= 1;
-                    setUpFrame();
+                    setUpFrame(true);
+                    frame.setVisible(true);
                 }
             }
         });
         frame.setJMenuBar(menuBar);
 
 
-        setUpFrame();
+        setUpFrame(false);
 
 
 
@@ -103,10 +109,17 @@ public class StoryGUI {
         return done;
     }
 
-    public void setUpFrame(){
+    public void setUpFrame(boolean clear){
+
+        if (clear){
+            frame.remove(label);
+        }
+
         text = d.get(tVal);
 
-        JLabel label = new JLabel(text);
+        this.label = new JLabel(text);
+
+
 
 
         GridBagConstraints gbc = new GridBagConstraints(); // Set up GridBagConstraints to control the placement and resizing of buttons
@@ -120,6 +133,7 @@ public class StoryGUI {
         // Add buttons to the frame using GridBagLayout
         gbc.gridx = 0;
         gbc.gridy = 0;
+
         frame.add(label, gbc);
 
 

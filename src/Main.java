@@ -5,8 +5,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         AudioCont introMusic = new AudioCont();
-        introMusic.playSound("107330__chimerical__countdown-news-intro.wav");
+        introMusic.playSoundLoop("107330__chimerical__countdown-news-intro.wav");
+
+
         StoryGUI story = new StoryGUI();
+        while (!story.isDone()){
+            Thread.sleep(0);
+        }
+
+
         MenuMk2 intro = new MenuMk2(); // create and start the intro GUI
         while (!intro.isStart()){
             Thread.sleep(0); // ide no like this
