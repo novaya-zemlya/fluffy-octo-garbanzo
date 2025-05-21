@@ -53,7 +53,7 @@ public class AudioCont {
 
             clip.addLineListener(event -> {
                 if (event.getType() == LineEvent.Type.STOP) {
-                    clip.start();
+                    playSoundLoop(soundFilePath);
                 }
             });
 

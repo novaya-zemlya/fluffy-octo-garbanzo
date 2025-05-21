@@ -25,7 +25,7 @@ public class StoryGUI {
 
         d.put(0,"You Turn on the news, after all tonight is the big night.");
         d.put(1,"The televison's slightly blurry picture starts to clear");
-        d.put(2,"The Ads end and the camera cuts to the news reporter.");
+        d.put(2,"The ads end and the camera cuts to the news reporter.");
         d.put(3,"* and the results are in! We now know with certainty who won the election*");
         d.put(4,"you are shocked to see your party won");
         d.put(5,"wouldn't that make you in charge?");

@@ -21,7 +21,25 @@ public class ReportGUI {
 
         frame.setLayout(new GridBagLayout()); // Use GridBagLayout thing
 
-        JLabel label = new JLabel("Nation " + Globe.moving + " is making turn");
+        Nation player = Globe.nationList.getFirst();
+
+        StringBuilder nationslLeft = new StringBuilder(); //intellej says string builder is better than +=
+
+        for (Nation n : Globe.nationList){
+            if (!n.isDone()){
+                if (n.equals(Globe.nationList.getFirst())){
+                    System.out.println("Nation: " +n +" is human, will not add to hostile list");
+                }
+                else {
+                nationslLeft.append(n);
+                nationslLeft.append(" ");}
+            }
+        }
+
+        //JLabel label = new JLabel(player + " Remaining population: " + player.getPop() +n+ "");
+        JLabel label = new JLabel("<html> Nation: "+ player +"<br/> Remaining population: "+ player.getPop() +"<br/> Funds: "+player.getMoney() +"<br/> Divisions: "+player.getDivisions() + "<br/> Hostile Nations Remaining: " + nationslLeft+ "<br/> Report issued on cycle: " + player.getNationCycle()+" <br/> Current global population: "+ Globe.getGlobePop() +"</html>", SwingConstants.CENTER);
+        //System.out.println(Globe.populationStart);
+        //System.out.println("get globe pop: "+Globe.getGlobePop());
 
 
 

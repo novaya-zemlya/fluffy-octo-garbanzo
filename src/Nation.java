@@ -43,7 +43,7 @@ public class Nation {
     private Nation hit(Nation attacker){ // nation takes a small hit, caused a loss in population
         war = true;
         boolean a = Math.random() > 0.5 * detectionMod;
-        enemy = (a) ? (attacker) : (null);
+        enemy = (a) ? (attacker) : (this.enemy);
         pop /= (3 * damageMod);
         return enemy;
     }
@@ -51,9 +51,14 @@ public class Nation {
         war = true;
         damageMod -= 0.2;
         boolean a = Math.random() > 0.2 * detectionMod;
-        enemy = (a) ? (attacker) : (null);
-        if (Math.random() * sCount * 3 > attacker.interceptMod * 2)
+        enemy = (a) ? (attacker) : (this.enemy);
+        if (Math.random() * sCount * 3 > attacker.interceptMod * 1.2){
+            System.out.println("Attack success");
             pop /= 5;
+        }
+        else{
+            System.out.println("Attack intercepted");
+        }
         return enemy;
     }
 
@@ -225,6 +230,10 @@ public class Nation {
             money -= 500;
         }
 
+    }
+
+    public int getDivisions(){
+        return divisions;
     }
 
 

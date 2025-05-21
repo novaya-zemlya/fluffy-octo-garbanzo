@@ -29,9 +29,8 @@ public class About {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JOptionPane.showMessageDialog(frame, "Welcome commander, you are in charge of a nation through perilous times. Your goal is to reduce all other nations populations to under 1000.");
-
-
+                JOptionPane.showMessageDialog(frame, "Welcome commander, you are in charge of a nation through perilous times. Your goal is to get all nations to surrender.");
+                JOptionPane.showMessageDialog(frame,"A nation will surrender if invaded, or if their population falls below 1000. ");
 
             }
         });
@@ -79,7 +78,7 @@ public class About {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JOptionPane.showMessageDialog(frame, "deal a small blow to target population without letting them know who attacked them");
+                JOptionPane.showMessageDialog(frame, "deal a small blow to target population with a reduced chance of letting them know who attacked them");
 
             }
         });

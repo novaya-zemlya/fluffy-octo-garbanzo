@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class MenuGUI {
     JFrame frame = new JFrame("Stuff"); // new window
-    private Nation target;
+    private Nation target; // the targeted nation
+    private static String name; // the name of the player
 
     public MenuGUI() {
 
@@ -110,6 +111,7 @@ public class MenuGUI {
         report.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ReportGUI r = new ReportGUI();
                 System.out.println("report clicked, this does nothing for now");
             }
         });
@@ -228,13 +230,24 @@ public class MenuGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Nation player = Globe.nationList.getFirst();
-                    if (player.isWar()){
+                    /*if (player.isWar()){
                         JOptionPane.showMessageDialog(frame, "Already at War (max of 1 target allowed)");
                     }
+
                     else {
                     player.declareWar(target);
                     notifyWar();
                     player.increaseNationCycle();}
+
+                     */
+
+                    player.declareWar(target);
+                    player.setEnemy(target);
+                    notifyWar();
+                    player.increaseNationCycle();
+
+
+
                 }
                 catch (NullPointerException u){
                     JOptionPane.showMessageDialog(frame, "No Target Selected");
@@ -250,7 +263,14 @@ public class MenuGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Nation player = Globe.nationList.getFirst();
-                    player.invade(target);
+                    String outcome = player.invade(target);
+                    if (outcome.equals("failed")){
+                        JOptionPane.showMessageDialog(frame, "Invasion Failed, we lost all our divisions.");
+                    } else if (outcome.equals("success")) {
+                        JOptionPane.showMessageDialog(frame, "Invasion success "+ target.toString() + " surrendered!");
+                        JOptionPane.showMessageDialog(frame,"We have " + player.getDivisions() + "divisions remaining.");
+
+                    }
                     notifyWar();
                     player.increaseNationCycle();
                 }
@@ -348,5 +368,13 @@ public class MenuGUI {
 
     public void notifyWar(){
         JOptionPane.showMessageDialog(frame, "You are at war with: " + Globe.nationList.getFirst().getEnemy().toString());
+    }
+
+    public static void setName(){
+        name =  JOptionPane.showInputDialog("Enter Nation Name");
+    }
+
+    public static String getName() {
+        return name;
     }
 }

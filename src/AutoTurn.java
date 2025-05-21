@@ -12,7 +12,7 @@ public class AutoTurn {
                     n.setHen(false);
                 }
                 if (n.getEnemy() != null) {
-                    int warMove = (int) (Math.random() * (1) + 1 );
+                    int warMove = (int) (Math.random()*(2-1))+1;
                     if (warMove == 1) {
                         n.attack(n.getEnemy());
                         System.out.println("attacked");
@@ -48,7 +48,7 @@ public class AutoTurn {
                     n.increaseNationCycle();
                 } else if (move == 4) {
                     do {
-                        n.declareWar(Globe.nationList.get((int) ((Math.random() * (Globe.nationList.size() - 1) + 1))));
+                        n.declareWar(Globe.nationList.get((int) ((Math.random() * (Globe.nationList.size()) ))));
                     } while (n.getEnemy().equals(n));
                     if (n.getEnemy().equals(Globe.nationList.getFirst())){
                         notWar = true;
@@ -58,9 +58,9 @@ public class AutoTurn {
                     System.out.println("declared war");
 
                 } else if (move == 5) {
-                    Nation target = (Globe.nationList.get((int) ((Math.random() * (Globe.nationList.size()-1)+1))));
+                    Nation target = (Globe.nationList.get((int) ((Math.random() * (Globe.nationList.size()-1)))));
                     while (target.equals(n)){
-                        target = (Globe.nationList.get((int) ((Math.random() * (Globe.nationList.size()-1)+1))));
+                        target = (Globe.nationList.get((int) ((Math.random() * (Globe.nationList.size()-1)))));
                     }
                     if (target.equals(Globe.nationList.getFirst())){
                         notWar = true;
@@ -91,7 +91,7 @@ public class AutoTurn {
                 } else {
                     n.fundRaise();
                     n.increaseNationCycle();
-                    System.out.println("fundraise");
+                    System.out.println("Other picked, fundraise");
                 }
 
 

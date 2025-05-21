@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         //AudioCont introMusic = new AudioCont();
-        AudioCont.playSound("107330__chimerical__countdown-news-intro.wav");
+        AudioCont.playSoundLoop("107330__chimerical__countdown-news-intro.wav");
 
 
         StoryGUI story = new StoryGUI();
@@ -28,8 +28,9 @@ public class Main {
 
 
         Menu start = new Menu(); // create a menu
+        MenuGUI.setName();
         AutoTurn chooser = new AutoTurn(); // create an autoTurn
-        start.setName("human"); // used to set player name
+        start.setName(MenuGUI.getName()); // used to set player name
         Globe world = new Globe(); // create 'globe' to hold all nations
         Nation human = new Nation(start.getName(), 1000000,2,0); // human nation
         Nation canada = new Nation("Canada",500000,1,1); // canada
@@ -103,6 +104,7 @@ public class Main {
         }
         AudioCont.stopSound();
         start.GUIOff();
+        //start.
 
     }
 
