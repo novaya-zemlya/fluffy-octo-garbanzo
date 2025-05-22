@@ -288,6 +288,7 @@ public class MenuGUI {
                 try {
                     Nation player = Globe.nationList.getFirst();
                     player.stealthStrike(target,player);
+                    player.increaseNationCycle();
                     notifyWar();
                 }
                 catch (NullPointerException u){

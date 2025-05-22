@@ -80,7 +80,7 @@ public class AudioCont {
     }
 
     public static void playMid2(){
-        AudioCont.playSound("806415__harrisonlace__synth_arp_escape_from_boston_dynamics_fmin_125.wav");
+        AudioCont.playSound("568857__humanoide9000__military-march-music.wav");
         clip.addLineListener(event -> {
             if (event.getType() == LineEvent.Type.STOP) {
                 AudioCont.playMid1();
