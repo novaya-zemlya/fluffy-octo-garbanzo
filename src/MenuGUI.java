@@ -1,3 +1,5 @@
+// Lots of stuff in here...
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -183,9 +185,13 @@ public class MenuGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Nation player = Globe.nationList.getFirst();
+                    if (!target.isDone()){
                     player.attack(target);
                     notifyWar();
-                    player.increaseNationCycle();
+                    player.increaseNationCycle();}
+                    else{
+                        JOptionPane.showMessageDialog(frame, "Target is no longer hostile");
+                    }
                 }
                 catch (NullPointerException u){
                     JOptionPane.showMessageDialog(frame, "No Target Selected");
@@ -241,10 +247,17 @@ public class MenuGUI {
 
                      */
 
+                    if (!target.isDone()){
+
                     player.declareWar(target);
                     player.setEnemy(target);
                     notifyWar();
-                    player.increaseNationCycle();
+                    player.increaseNationCycle();}
+
+                    else{
+                        JOptionPane.showMessageDialog(frame, "Target is no longer hostile");
+                    }
+
 
 
 
@@ -264,6 +277,7 @@ public class MenuGUI {
                 try {
                     Nation player = Globe.nationList.getFirst();
                     String outcome = player.invade(target);
+                    if(!target.isDone()){
                     if (outcome.equals("failed")){
                         JOptionPane.showMessageDialog(frame, "Invasion Failed, we lost all our divisions.");
                     } else if (outcome.equals("success")) {
@@ -272,7 +286,10 @@ public class MenuGUI {
 
                     }
                     notifyWar();
-                    player.increaseNationCycle();
+                    player.increaseNationCycle();}
+                    else{
+                        JOptionPane.showMessageDialog(frame, "Target is no longer hostile");
+                    }
                 }
                 catch (NullPointerException u){
                     JOptionPane.showMessageDialog(frame, "No Target Selected");
@@ -287,9 +304,13 @@ public class MenuGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Nation player = Globe.nationList.getFirst();
+                    if(!target.isDone()){
                     player.stealthStrike(target,player);
-                    player.increaseNationCycle();
                     notifyWar();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(frame, "Target is no longer hostile");
+                    }
                 }
                 catch (NullPointerException u){
                     JOptionPane.showMessageDialog(frame, "No Target Selected");
@@ -367,15 +388,20 @@ public class MenuGUI {
         frame.setVisible(false);
     }
 
-    public void notifyWar(){
-        JOptionPane.showMessageDialog(frame, "You are at war with: " + Globe.nationList.getFirst().getEnemy().toString());
+    public void notifyWar(){ // popup for if attacked/at war
+        try {
+            JOptionPane.showMessageDialog(frame, "You are at war with: " + Globe.nationList.getFirst().getEnemy());
+        }
+         catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(frame,"We have been attacked, threat unknown." );
+        }
     }
 
-    public static void setName(){
+    public static void setName(){ // set the nation name
         name =  JOptionPane.showInputDialog("Enter Nation Name");
     }
 
-    public static String getName() {
+    public static String getName() { // return the name
         return name;
     }
 }
