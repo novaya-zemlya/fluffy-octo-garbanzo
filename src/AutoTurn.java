@@ -2,7 +2,7 @@
 import java.util.Random;
 
 public class AutoTurn {
-    public static boolean notWar;
+    public static boolean notWar; // if a notification should be sent
     public void makeMove(Nation n) {
         notWar = false;
         if (n.isHen() && ! n.getName().equals(Globe.nationList.getFirst().getName())) { //check if nation can make move

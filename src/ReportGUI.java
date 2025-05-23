@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class ReportGUI {
-    JFrame frame = new JFrame("Report");
+    JFrame frame = new JFrame("Report"); // name of the window
     public ReportGUI() {
 
         frame.setSize(400, 300);  // Set the frame's size
@@ -21,7 +21,7 @@ public class ReportGUI {
 
         frame.setLayout(new GridBagLayout()); // Use GridBagLayout thing
 
-        Nation player = Globe.nationList.getFirst();
+        Nation player = Globe.nationList.getFirst(); // get the player
 
         StringBuilder nationslLeft = new StringBuilder(); //intellej says string builder is better than +=
 

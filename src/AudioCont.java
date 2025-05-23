@@ -6,10 +6,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class AudioCont {
-    private static Clip clip;
-    private static boolean go;
+    private static Clip clip; // the sound
+    private static boolean go; // if the music should be playing
 
-    public AudioCont() {
+    public AudioCont() { // make a audiocont
         go = true;
 
     }
@@ -70,7 +70,7 @@ public class AudioCont {
     }
 
 
-    public static void playMid1(){
+    public static void playMid1(){ // used to loop between 2 songs
         AudioCont.playSound("172561__djgriffin__video-game-7.wav");
         clip.addLineListener(event -> {
             if (event.getType() == LineEvent.Type.STOP) {
@@ -79,7 +79,7 @@ public class AudioCont {
         });
     }
 
-    public static void playMid2(){
+    public static void playMid2(){ // used to loop between 2 songs
         AudioCont.playSound("568857__humanoide9000__military-march-music.wav");
         clip.addLineListener(event -> {
             if (event.getType() == LineEvent.Type.STOP) {
@@ -90,15 +90,15 @@ public class AudioCont {
 
     }
 
-    public static void playEnd(){
+    public static void playEnd(){ // This song does not work, never used
         AudioCont.playSound("803432__logicmoon__under-the-sky.wav");
     }
 
-    public static void playAlarm(){
+    public static void playAlarm(){ // play the alarm sound
         AudioCont.playSound("33732__jobro__1-alarm-short-e.wav");
     }
 
-    public static void playMidGame() throws InterruptedException {
+    public static void playMidGame() throws InterruptedException { // loop through many songs DOES NOT WORK YET
         while (go) {
             playMid1();
             while (clip.isRunning()) {
@@ -121,7 +121,7 @@ public class AudioCont {
         }
     }
 
-    public void stopMid(){
+    public void stopMid(){ // stop the music
         go = false;
     }
 }

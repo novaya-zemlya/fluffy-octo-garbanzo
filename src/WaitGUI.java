@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class WaitGUI {
-    JFrame frame = new JFrame("While Other Nations Think");
+    JFrame frame = new JFrame("While Other Nations Think");  // name of the window
     public WaitGUI() {
 
         frame.setSize(400, 300);  // Set the frame's size

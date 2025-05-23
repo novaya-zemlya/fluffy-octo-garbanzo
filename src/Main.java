@@ -2,6 +2,7 @@
 import java.sql.Time;
 import java.util.Scanner;
 //hello
+// TODO: make end game 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         //AudioCont introMusic = new AudioCont();
@@ -66,7 +67,7 @@ public class Main {
             while (moves/Globe.currentCycle == 1) {
                 for (Nation n : Globe.nationList) { // for every nation in the globe
                     System.out.println(n + " is making move");
-                    if (Settings.doWait) {
+                    if (Settings.doWait) { // if the nation move speed is not instant
                         world.setMoving(n);
                         WaitGUI wait = new WaitGUI();
                         chooser.makeMove(n);
@@ -84,7 +85,12 @@ public class Main {
                         moves += n.getNationCycle();
                         n.updateEnemy();
                         if (AutoTurn.notWar){
-                            start.notWar();
+                            try {
+                                start.notWar();
+                            } catch (NullPointerException e) {
+                                System.out.println("Cannot find nation");
+                            }
+                            
                         }
                         System.out.println();
                         Thread.sleep(Settings.speed * 1000);
@@ -96,6 +102,14 @@ public class Main {
             while (human.getNationCycle() <= cCycle){ //until player makes move
                 Thread.sleep(0); // might not be needed
             }
+            System.out.println(Globe.nationList.getFirst().getPop());
+
+            if (Globe.nationList.getFirst().getPop() < 1000){
+                Globe.nationList.getFirst().setDone(true);
+
+            }
+
+            start.evalEnd(); // check if the game should end
 
 
 
@@ -103,10 +117,13 @@ public class Main {
 
         }
         AudioCont.stopSound();
+        start.evalEnd();
        // AudioCont.playSound("findWorkingSound");
+       // TODO: make end sound work
+
+
        // Thread.sleep(12000);
         start.GUIOff();
-        //start.
 
     }
 

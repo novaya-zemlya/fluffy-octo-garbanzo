@@ -55,4 +55,20 @@ public class Globe {
         return pop;
     }
 
+
+    public static int numHostileNations(){ // return the number of hostile nations, used to know if the game is over
+        int count = 0;
+
+        for (Nation n : Globe.nationList){
+            if (n.equals(Globe.nationList.getFirst())){
+
+            }
+
+            else if (!n.isDone()){
+                count ++;
+            }
+        }
+        return count;
+    }
+
 }

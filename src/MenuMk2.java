@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class MenuMk2 {
     JFrame frame = new JFrame("Start"); // new window
-    private boolean start = false;
+    private boolean start = false; // if the 'game' should start 
     public MenuMk2() {
 
         frame.setSize(400, 300);  // Set the frame's size

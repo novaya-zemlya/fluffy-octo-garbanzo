@@ -44,7 +44,13 @@ public class Menu {
     }
 
 
-    public void notWar(){
+    public void notWar(){ // notify if there is a war
         GUI.notifyWar();
+    }
+
+    public void evalEnd() throws InterruptedException{ // check if the game should end
+        if (Globe.numHostileNations() < 1 || Globe.nationList.getFirst().isDone()){
+            EndGUI end = new EndGUI();
+        }
     }
 }

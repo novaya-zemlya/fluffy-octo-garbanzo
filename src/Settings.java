@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.Scanner;
 public class Settings {
     JFrame frame = new JFrame("Settings"); // new window
-    public static int speed;
-    public static boolean doWait = false;
+    public static int speed; // speed nations make a turn at
+    public static boolean doWait = false; // should the player have to wait
     public Settings() {
 
         frame.setSize(400, 300);  // Set the frame's size
@@ -129,7 +129,7 @@ public class Settings {
     }
 
 
-    public int getSpeed() {
+    public int getSpeed() { // return the speed that nations move at
         return speed;
     }
 }

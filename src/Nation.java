@@ -52,7 +52,7 @@ public class Nation {
         damageMod -= 0.2;
         boolean a = Math.random() > 0.2 * detectionMod;
         enemy = (a) ? (attacker) : (this.enemy);
-        if (Math.random() * sCount * 3 > attacker.interceptMod * 1.2){
+        if (Math.random() * sCount * 3 > attacker.interceptMod * 0.5){
             System.out.println("Attack success");
             pop /= 5;
         }
@@ -62,7 +62,7 @@ public class Nation {
         return enemy;
     }
 
-    public void setHen(boolean hen) {
+    public void setHen(boolean hen) { // set the hen status of the nation (used to know if it lost)
         this.hen = hen;
     } // 🐖
 
@@ -81,7 +81,7 @@ public class Nation {
 */
         return "Launched attack on: " + target.toString();
     }
-    public String stealthStrike(Nation target, Nation attacker){ //attacks target with hit (no chance of detection)
+    public String stealthStrike(Nation target, Nation attacker){ //attacks target with hit (small chance of detection)
         if (done)
             return "cannot attack";
 
@@ -232,8 +232,12 @@ public class Nation {
 
     }
 
-    public int getDivisions(){
+    public int getDivisions(){ // return the number of divisions
         return divisions;
+    }
+
+    public void setDone(boolean done){ // set the done status
+        this.done = done;
     }
 
 
