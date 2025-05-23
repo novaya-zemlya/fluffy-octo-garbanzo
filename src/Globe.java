@@ -39,7 +39,7 @@ public class Globe {
     }
 
     public void setMoving (Nation moving){
-        this.moving = moving;
+        Globe.moving = moving;
     } // set the nations that is moving
 
     public Nation getMoving(){

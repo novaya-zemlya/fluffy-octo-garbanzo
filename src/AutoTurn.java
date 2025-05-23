@@ -1,3 +1,4 @@
+
 import java.util.Random;
 
 public class AutoTurn {
@@ -52,6 +53,7 @@ public class AutoTurn {
                     } while (n.getEnemy().equals(n));
                     if (n.getEnemy().equals(Globe.nationList.getFirst())){
                         notWar = true;
+                        AudioCont.playAlarm();
 
                     }
                     n.increaseNationCycle();
@@ -64,6 +66,7 @@ public class AutoTurn {
                     }
                     if (target.equals(Globe.nationList.getFirst())){
                         notWar = true;
+                        AudioCont.playAlarm();
                     }
                     n.stealthStrike(target,n);
                     n.increaseNationCycle();
@@ -83,6 +86,7 @@ public class AutoTurn {
                     }
                     if (target.equals(Globe.nationList.getFirst())){
                         notWar = true;
+                        AudioCont.playAlarm();
                     }
                     n.attack(target);
                     n.increaseNationCycle();
