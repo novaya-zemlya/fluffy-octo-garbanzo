@@ -74,6 +74,7 @@ public class Settings {
             @Override
             public void actionPerformed(ActionEvent e) {
                 speed = 0;
+doWait = false;
             }
         });
 
